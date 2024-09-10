@@ -6,7 +6,9 @@ struct Args {
     #[command(subcommand)]
     command: Option<Commands>,
     #[arg(long)]
-    pos: String,
+    revision: Option<i32>,
+    #[arg(long)]
+    path: Option<String>,
 }
 
 #[derive(Subcommand)]
@@ -24,5 +26,10 @@ fn main() {
         Commands::Log => "log",
     };
     println!("{}", command);
-    println!("{}", args.pos);
+    if args.revision.is_some() {
+        println!("{}", args.revision.unwrap());
+    }
+    if args.path.is_some() {
+        println!("{}", args.path.unwrap());
+    }    
 }
