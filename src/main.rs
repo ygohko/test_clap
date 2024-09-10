@@ -3,11 +3,14 @@ use clap::Subcommand;
 
 #[derive(Parser)]
 struct Args {
+    /// Command you want to do
     #[command(subcommand)]
     command: Option<Commands>,
-    #[arg(long)]
+    /// Revision that you choose
+    #[arg(short, long)]
     revision: Option<i32>,
-    #[arg(long)]
+    /// Path to a file or directory that you need
+    #[arg(short, long)]
     path: Option<String>,
 }
 
